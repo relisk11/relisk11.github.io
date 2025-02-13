@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where's Waldo Game</title>
+
+  <style>
+
+    body {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center;     /* Center vertically */
+      height: 100vh;          /* Full viewport height */
+      margin: 0;              /* Remove default margin */
+      background-color: #FFBBC0; /* Background color */
+  }
+    h1 {
+      margin-top: 50 px;
+      font-family: 'Roboto', sans-serif;
+      color: rgb(0, 0, 0);      
+      font-weight: bold;
+    }
+
+    .rounded-rectangle {
+      width: 1450px;           
+      height: 650px;          
+      background-color: #FEE9EC;      /* White background for the rounded box */
+      border-radius: 15px;         /* Rounded corners */
+      padding: 20px;                /* Padding inside the box */
+      text-align: center;           /* Center text */          
+      margin: auto;                 /* Center the box on the page */
+    }    
+  
+   
+    .game-container {
+      position: relative;
+      width: 70vw;
+      max-width: 800px;
+      max-height: 100 px;
+      margin: 20px;
+      margin-top: 50 px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .game-image {
+      width: 55%;
+      height : 80%;
+      border-radius: 10px;
+      cursor: crosshair;
+    }
+
+    #message {
+      margin-bottom: 10px;
+      font-family: 'Roboto', sans-serif;
+      color: rgb(0, 0, 0);      
+      font-weight: bold;
+        }
+
+    .next-button {
+      padding: 10px 20px;
+      background-color: #4c6ef5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: none;
+    }
+
+    .next-button:hover {
+      background-color: #3b5bdb;
+    }
+  </style>
+</head>
+<body>
+  <div class="rounded-rectangle">
+      <h1>Find the White Dragon!</h1>
+      <div class="message" id = "message"></div>
+      <img
+          src="dragon.png"
+          alt="Find Waldo"
+          class="game-image"
+          id="gameImage"
+        />
+  </div>
+  
+  <script>
+    // Array of images and Waldo positions (in percentage coordinates)
+    const levels = [
+      {
+        image: "dragon.png", // Replace with your image
+        waldo: { x: 30, y: 80 }, // Percentage coordinates of Waldo
+      },
+    ];
+
+    let currentLevel = 0;
+    const detectionRadius = 5; // Percentage radius around Waldo's position
+
+    const gameImage = document.getElementById("gameImage");
+    const message = document.getElementById("message");
+    const nextButton = document.getElementById("nextButton");
+
+    // Load the current level
+    function loadLevel() {
+      gameImage.src = levels[currentLevel].image;
+      message.textContent = "Find Dragon by clicking on the image!";
+      message.style.color = rgb(0, 0, 0);
+    }
+
+    // Handle click on the image
+    gameImage.addEventListener("click", (event) => {
+      const rect = gameImage.getBoundingClientRect();
+      const clickX = ((event.clientX - rect.left) / rect.width) * 100;
+      const clickY = ((event.clientY - rect.top) / rect.height) * 100;
+
+      const waldoPosition = levels[currentLevel].waldo;
+      const distance = Math.sqrt(
+        Math.pow(clickX - waldoPosition.x, 2) + Math.pow(clickY - waldoPosition.y, 2)
+      );
+
+      if (distance <= detectionRadius) {
+        message.textContent = "You found Dragon! 🎉";
+        message.style.color = "green";
+        setTimeout(() => {
+          window.location.href = "waldo3.html"; // Redirect after a delay
+      }, 1000);
+      } else {
+        message.textContent = "Dragon is not here, try again!";
+        message.style.color = "red";
+      }
+    });
+
+     // Load the level when the page is ready
+     loadLevel();
+
+  </script>
+</body>
+</html>

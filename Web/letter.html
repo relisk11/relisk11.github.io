@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+    body {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center;     /* Center vertically */
+      height: 100vh;          /* Full viewport height */
+      margin: 0;              /* Remove default margin */
+      background-color: #FFBBC0; /* Background color */
+  }
+    h1 {
+      margin-top: 20 px;
+      margin-bottom: 300 px;
+      font-family: 'Roboto', sans-serif;
+      color: rgba(0, 0, 0, 0.82);      
+      font-weight: bold;
+      text-align: center;
+    }
+
+    h2 {
+        margin-top: 30 px;
+        font-family: 'Roboto', sans-serif;
+        color: rgba(0, 0, 0, 0.715);  
+        font-size:medium;
+        text-align: center;
+      }
+
+    .rounded-rectangle {
+      width: 1450px;           
+      height: 650px;          
+      background-color: #ff0000c7; 
+      border-radius: 15px;    
+      display: block;          
+      align-items: center;    
+      justify-content: center; 
+      color: white;         
+      font-size: 20px;       
+  }
+    #noButton {
+        position: absolute;
+        margin-left: -200px;
+        transition: 0.5s;
+}
+
+    #yesButton {
+        position: absolute;
+        margin-right: 150px;
+        margin-left : -450px
+    }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .btn {
+        background-color: #ffffff;
+        color: rgb(181, 66, 66);
+        padding: 30px 64px;
+        text-align: center;
+        display: inline-block;
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: none;
+        border-radius: 12px;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background-color: #FFBBC0;
+      }
+    
+    video{
+        align-content: center;
+        max-width: 40%;
+    }
+</style>
+<body>
+    <div class="rounded-rectangle">
+    <h1>Happy Valentine's Day Nana!</h1>
+    <h2>
+        Thanks for being here all this time and still being with me. Thanks for looking for me everyday, for being someone who always got my back and someone I can share my feelings to.
+    </h2> 
+    <h2>   
+        I hope I can be close to you and hug you again. I hope I can be rich to treat you and I wish I have the chance to treat you better.
+    </h2> 
+    
+    <h2>
+        I hope I am there for you when you become sucessful. hahhaha
+    </h2> 
+    
+    <h2>
+        and i hope you can see me become successful too..
+    </h2> 
+    <h2>    
+        I love you Nana.
+    </h2>              
+    <h2>    
+        <video id = "myVideo" controls  muted>
+        <source src ="video.mp4">
+    </video>
+    </h2> 
+    
+    </div>
+</body>
+
+<script>
+    // Set the delay in milliseconds (e.g., 3000 ms = 3 seconds)
+    const delay = 1000;
+
+    const video = document.getElementById('myVideo');
+
+    // Use setTimeout to start playback after the delay
+    setTimeout(() => {
+        video.play();
+    }, delay);
+</script>

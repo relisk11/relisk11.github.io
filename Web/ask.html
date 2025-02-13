@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+    body {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center;     /* Center vertically */
+      height: 100vh;          /* Full viewport height */
+      margin: 0;              /* Remove default margin */
+      background-color: #FFBBC0; /* Background color */
+  }
+    h1 {
+      margin-top: 20px;
+      margin-bottom: 300px;
+      font-family: 'Roboto', sans-serif;
+      color: rgb(0, 0, 0);      
+      font-weight: bold;
+    }
+
+    .rounded-rectangle {
+      width: 1450px;           
+      height: 650px;          
+      background-color: #FEE9EC; 
+      border-radius: 15px;    
+      display: flex;          
+      align-items: center;    
+      justify-content: center; 
+      color: white;         
+      font-size: 20px;       
+  }
+    #noButton {
+        position: absolute;
+        margin-left: -200px;
+        transition: 0.5s;
+}
+
+    #yesButton {
+        position: absolute;
+        margin-right: 150px;
+        margin-left : -450px
+    }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .btn {
+        background-color: #ffffff;
+        color: rgb(233, 48, 48);
+        padding: 30px 64px;
+        text-align: center;
+        display: inline-block;
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: none;
+        border-radius: 12px;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background-color: #FFBBC0;
+      }
+</style>
+<body>
+    <div class="rounded-rectangle">
+    <h1>Will you be Valentine?</h1>
+    <div class = "buttons">
+        <button class="btn" id = "yesButton" onclick="nextPage()">Yes</button>
+        <button class="btn" id= "noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        <script>
+            function nextPage() {
+                window.location.href = "waldo.html";
+            }
+                
+            function moveButton() {
+                var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth) - 45;
+                var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight) - 28;
+                document.getElementById('noButton').style.left = `${x}px`;
+                document.getElementById('noButton').style.top = `${y}px`;
+            }
+        </script> 
+    </div>
+    </div>
+</body>
